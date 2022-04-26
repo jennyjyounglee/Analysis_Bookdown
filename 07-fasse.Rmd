@@ -2,15 +2,61 @@
 
 The FAS Secure Environment (FASSE) is a secure multi-tenant cluster environment to provide Harvard researchers access to a secure enclave for analysis of sensitive datasets with DUA‘s and IRB’s classified as Level 3 <https://docs.rc.fas.harvard.edu/kb/fasse/>.
 
-Access to the cluster is restricted via a Virtual Private Network (VPN) and only authorized users/groups will be added to the FASSE VPN realm. We provide different storage tiers based on project needs. Please review storage options. 
-
-## VPN
-To connect to a FASSE environment, you will connect to the FASRC VPN <vpn.rc.fas.harvard.edu> using the `@fasse` realm (ex. `–jennylee@fasse`), your FASRC password, and your OpenAuth 2FA code. 
-
-## VDI access (VDI/OoD)
-VDI, aka OpenOnDemand or OoD, is a virtual GUI interface that provides everything from pre-built apps to interactive command line access within a familiar desktop-like environment. The FASSE VDI is available when connected to our `@fasse` VPN realm, through your web browser.  Please visit to access the service: <https://fasseood.rc.fas.harvard.edu>.
 
 ## How to get started in FASSE?
+
+### VPN
+Access to the cluster is restricted via a Virtual Private Network (VPN) and only authorized users/groups will be added to the FASSE VPN realm. 
+
+To connect to a FASSE environment, you will connect to the FASRC VPN <vpn.rc.fas.harvard.edu> using the `@fasse` realm (ex. `–jennylee@fasse`), your FASRC password, and your OpenAuth 2FA code. 
+
+When I'm connected to FASSE VPN, based on my experience, I wasn't able to git push to my personal github account and also don't have access to mobile chat features.
+
+### VDI access (VDI/OoD)
+VDI, aka OpenOnDemand or OoD, is a virtual GUI interface that provides everything from pre-built apps to interactive command line access within a familiar desktop-like environment. The FASSE VDI is available when connected to our `@fasse` VPN realm, through your web browser.  Please visit to access the service: <https://fasseood.rc.fas.harvard.edu>.
+
+### Working on R shell
+
+Command-line access is also available for those who need/want to run jobs using a CLI. Login nodes for FASSE can be accessed by SSH at <fasselogin.rc.fas.harvard.edu>.
+
+There are two ways of working in FASSE shell
+
+1. Access VDI <https://fasseood.rc.fas.harvard.edu> and clikc Clusters >_FASSE_Shell_Access
+
+2. Command line access using PuTTY: Add <fasselogin.rc.fas.harvard.edu> to "Host Name" and define a name to represent this session, e.g. `jennylee.fasse`. Then, click save for the future use.
+
+### How to set-up R in FASSE
+
+This link https://docs.rc.fas.harvard.edu/kb/r-packages/ explains R explanation by FASRC.
+
+1. To use R on the cluster, load the appropriate version available via our module system. See the modules list for [available version](https://portal.rc.fas.harvard.edu/p3/build-reports/). I decided to use the below version:
+```{bash, eval=F}
+module load gcc/9.3.0-fasrc01 R/4.0.5-fasrc02
+```
+
+2.Create a directory for your R package installs
+Before attempting to install your own R packages, you will first need to create a directory for your local R package installs to live in. You’ll only need to do this once for each version of R you use. This is the path you will then point the R_LIBS_USER variable to. I created a folder `$HOME/apps/R_4.0.5-fasrc02`.
+```{bash, eval=F}
+mkdir -pv ~/apps/R_4.0.5-fasrc02
+```
+
+3. Understanding the R_LIBS_USER environment variable
+The `R_LIBS_USER` environment variable is used by R to determine where packages you install should be located when the `install.packages()` function is called and when you later use them. It is set using:
+```{bash,eval=F}
+module load gcc/9.3.0-fasrc01 R/4.0.5-fasrc02
+export R_LIBS_USERS=$HOME/apps/R_4.0.5-fasrc02:$R_LIBS_USER
+```
+Note: You can also add this to you .bashrc if you wish, but we recommend calling this directly after loading the module in your scripts or when running R interactively. This ensures that your local library is the first one checked by R for installs and libraries..
+
+4. Example
+To install packages, you will need to load an R module, set your `R_LIBS_USER` variable, and run R. We recommend choosing a specific R module rather than simply using module load R. Look up available R modules here: https://portal.rc.fas.harvard.edu/apps/modules/R. Example:
+
+```{bash, eval=F}
+module load R/3.5.1-fasrc01
+export R_LIBS_USER=$HOME/apps/R_3.5.1:$R_LIBS_USER
+R
+```
+### Connect projects in FASSE to github
 
 I found Git tutorial in NSAPH Projects website helpful <https://nsaph.info/analysis.html#>
 

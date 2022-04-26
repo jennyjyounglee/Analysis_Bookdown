@@ -1,10 +1,8 @@
 Welcome! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+This book contains introduction to Git and Github, how to build a R package, how to build a bookdown.
 
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+You can view the website of this bookdown in <jennyjyounglee.github.io/Analysis_Bookdown>
 
 Additional resources:
 

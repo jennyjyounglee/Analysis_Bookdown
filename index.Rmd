@@ -8,9 +8,7 @@ bibliography:
 - book.bib
 - packages.bib
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  set in the _output.yml file.
-  The HTML output format for this example is bookdown::gitbook,
+  This book contains introduction to Git and Github, how to build a R package, how to build a bookdown.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---

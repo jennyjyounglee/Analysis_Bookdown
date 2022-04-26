@@ -32,6 +32,9 @@ publishing
 pages
 metadata-for-sharing
 fasse
+how-to-get-started-in-fasse
 vpn
 vdi-access-vdiood
-how-to-get-started-in-fasse
+working-on-r-shell
+how-to-set-up-r-in-fasse
+connect-projects-in-fasse-to-github
