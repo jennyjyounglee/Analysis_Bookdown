@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Sharing your book | A Book With Skills For Researchers</title>
+  <title>8.3 How to get started in FASSE? | A Book With Skills For Researchers</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta property="og:title" content="8.3 How to get started in FASSE? | A Book With Skills For Researchers" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta name="twitter:title" content="8.3 How to get started in FASSE? | A Book With Skills For Researchers" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -37,8 +37,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="callout-blocks.html"/>
-<link rel="next" href="publishing.html"/>
+<link rel="prev" href="vdi-access-vdiood.html"/>
+<link rel="next" href="references.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -238,16 +238,40 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sharing-your-book" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Sharing your book</h1>
+<div id="how-to-get-started-in-fasse" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> How to get started in FASSE?</h2>
+<p>I found Git tutorial in NSAPH Projects website helpful <a href="https://nsaph.info/analysis.html#" class="uri">https://nsaph.info/analysis.html#</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Create a project folder in <code>/n/dominici_nsaph_l3/projects/</code>. For example, I created a folder <code>/n/dominici_nsaph_l3/projects/pm25-mortality-medicare-causalgps-pool</code>.</p></li>
+<li><p>Initialize git, create a README.md file</p></li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="how-to-get-started-in-fasse.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="co"># initiate git</span></span>
+<span id="cb16-2"><a href="how-to-get-started-in-fasse.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create README.md file</span></span>
+<span id="cb16-3"><a href="how-to-get-started-in-fasse.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb16-4"><a href="how-to-get-started-in-fasse.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create .gitignore file and add a line data/</span></span>
+<span id="cb16-5"><a href="how-to-get-started-in-fasse.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;first commit&quot;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Save remote origin by using token.</li>
+</ol>
+<ul>
+<li>First, we need to create a repo in Github. For example,
+<a href="https://github.com/NSAPH-Projects/pm25-mortality-medicare-causalgps-pool" class="uri">https://github.com/NSAPH-Projects/pm25-mortality-medicare-causalgps-pool</a></li>
+<li>Then, create a token. To do so, Github &gt; Settings &gt; Developer’s Settings &gt; Personal Access Token.</li>
+<li>Copy and save the token created above. In the below code, insert that token instead of <code>mytoken</code>.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="how-to-get-started-in-fasse.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote remove origin <span class="co"># remove any remote origin if already exists</span></span>
+<span id="cb17-2"><a href="how-to-get-started-in-fasse.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://mytoken@github.com/NSAPH-Projects/pm25-mortality-medicare-causalgps-pool</span>
+<span id="cb17-3"><a href="how-to-get-started-in-fasse.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin master</span></code></pre></div>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="callout-blocks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="publishing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vdi-access-vdiood.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -278,7 +302,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/06-share.Rmd",
+"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/07-fasse.Rmd",
 "text": "Edit"
 },
 "history": {

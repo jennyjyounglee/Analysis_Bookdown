@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Sharing your book | A Book With Skills For Researchers</title>
+  <title>1.5 Output Formats | A Book With Skills For Researchers</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta property="og:title" content="1.5 Output Formats | A Book With Skills For Researchers" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta name="twitter:title" content="1.5 Output Formats | A Book With Skills For Researchers" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -37,8 +37,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="callout-blocks.html"/>
-<link rel="next" href="publishing.html"/>
+<link rel="prev" href="how-to-cite.html"/>
+<link rel="next" href="hello-bookdown.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -238,16 +238,39 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sharing-your-book" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Sharing your book</h1>
+<div id="output-formats" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Output Formats</h2>
+<p>The <code>split_by</code> argument specifies how you want to split the HTML output into multiple pages, and its possible values are:</p>
+<ul>
+<li><code>rmd</code>: use the base filenames of the input Rmd files to create the HTML filenames, e.g., generate <code>chapter3.html</code> for <code>chapter3.Rmd</code>.</li>
+<li><code>none</code>: do not split the HTML file (the book will be a single HTML file).</li>
+<li><code>chapter</code>: split the file by the a first-level (<code>#</code>) headers.</li>
+<li><code>section</code>: split the file by the a second-level (<code>##</code>) headers.</li>
+<li><code>chapter+number</code> and <code>section+number</code>: similar to <code>chapter</code> and <code>section</code>, but the files will be numbered.</li>
+</ul>
+<p>In my <code>_bookdown.yml</code>, I added <code>split_by:section</code> so that it split the file by the second-level headers.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="output-formats.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bookdown::gitbook:</span></span>
+<span id="cb12-2"><a href="output-formats.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">css:</span> style.css</span>
+<span id="cb12-3"><a href="output-formats.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">lib_dir:</span> assets</span>
+<span id="cb12-4"><a href="output-formats.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">split_by:</span> section</span>
+<span id="cb12-5"><a href="output-formats.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">config:</span></span>
+<span id="cb12-6"><a href="output-formats.html#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">toc:</span></span>
+<span id="cb12-7"><a href="output-formats.html#cb12-7" aria-hidden="true" tabindex="-1"></a>      <span class="ex">before:</span> <span class="kw">|</span></span>
+<span id="cb12-8"><a href="output-formats.html#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>li<span class="op">&gt;&lt;</span>a <span class="va">href=</span><span class="st">&quot;./&quot;</span><span class="op">&gt;</span>A <span class="ex">Minimal</span> Book Example<span class="op">&lt;</span>/a<span class="op">&gt;&lt;</span>/li<span class="op">&gt;</span></span>
+<span id="cb12-9"><a href="output-formats.html#cb12-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">after:</span> <span class="kw">|</span></span>
+<span id="cb12-10"><a href="output-formats.html#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&lt;</span>li<span class="op">&gt;&lt;</span>a <span class="va">href=</span><span class="st">&quot;https://github.com/rstudio/bookdown&quot;</span> <span class="va">target=</span><span class="st">&quot;blank&quot;</span><span class="op">&gt;</span>Published <span class="ex">with</span> bookdown<span class="op">&lt;</span>/a<span class="op">&gt;&lt;</span>/li<span class="op">&gt;</span></span>
+<span id="cb12-11"><a href="output-formats.html#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">edit:</span> https://github.com/USERNAME/REPO/edit/BRANCH/%s</span>
+<span id="cb12-12"><a href="output-formats.html#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">download:</span> [<span class="st">&quot;pdf&quot;</span>, <span class="st">&quot;epub&quot;</span>]</span></code></pre></div>
+
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="callout-blocks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="publishing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="how-to-cite.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hello-bookdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -278,7 +301,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/06-share.Rmd",
+"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/index.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,47 +1,141 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "A Book With Skills For Researchers"
+author: "Jenny Lee"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
+bibliography:
+- book.bib
+- packages.bib
 description: |
   This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
 # About
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+This book contains introduction to Git and Github, how to build a R package, how to build a bookdown.
 
-## Usage 
+## How I created this bookdown? 
 
+I first started from following a Youtube tutorial: <https://www.youtube.com/watch?v=RdSmYvbQkhs&t=192s>
+
+A creation of **bookdown** is done by **bookdown** package [@R-bookdown]. So I started to read a tutorial of **bookdown** package [@bookdown2016] for the detailed explanation : <https://bookdown.org/yihui/bookdown/>
+
+### Gitbook template
+The easiest way to get started writing a new `gitbook` is to use the RStudio Project Wizard (*File > New Project > New Directory > Book project using bookdown*) and select `gitbook` from the dropdown menu. <https://bookdown.org/yihui/bookdown/html.html#fig:new-bs4-book>
+
+- This will create several files such as .Rmd, .yml, .bib to build a template bookdown.
+
+### Initialize git
+We initialize this **bookdown** with git, so that we can take advantage of version control and upload in Github.
+```{bash, eval=F}
+git init
+git add --all
+git commit -m "Initial bookdown template"
+```
+
+### Change .yml files
+- In `output.yml` file, there are three sections as below. We would only like to keep  
+`bookdown::gitbook:` command but want to comment out `bookdown::pdf_book:` and `bookdown::epub_book: default`. This is how my `output.yml` will look like after commenting out unnecessary lines. This is because, to render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+
+```{bash, eval=F}
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">A Minimal Book Example</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+     edit: https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/%s
+     download: ["pdf", "epub"]
+# bookdown::pdf_book:
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
+#   keep_tex: yes
+# bookdown::epub_book: default
+
+```
+
+- In `_bookdown.yml` file, we need to add two of the followings:
+  * `book_filename: "Analysis_Bookdown"`
+  * `output_dir: "docs"`
+  This is how my `_bookdown.yml` will look like after adding the above two lines.
+
+```{bash, eval=F}
+book_filename: "Analysis_Bookdown"
+delete_merged_file: true
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Chapter "
+```
+
+We again commit the changes we made on `_output.yml` and `_bookdown.yml` files.
+```{bash, eval=F}
+git status
+git add _bookdown.yml
+git add _output.yml
+git commit -m "Change bookdown output defaults"
+```
+
+### Render a book
+
+You can render the HTML version of this example book without changing anything:
+
+In Rstudio > Build > Build Book. i.e. Find the **Build** pane in the RStudio IDE, and click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+
+Or build the book from the R console:
+```{r, eval=FALSE}
+bookdown::render_book()
+```
+
+This will create two folders `/docs` and `_bookdown_files`.
+- `/docs` contains .html file created from .Rmd files
+- `bookdown_files` contains complied images, which we don't need to commit image files. So we add a line `bookdown_files` in `.gitignore`. This is how my `.gitignore` file looks like.
+```{bash, eval=F}
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+_bookdown_files
+```
+
+We again commit the changes we made on `.gitignore` and `docs/` files.
+```{bash, eval=F}
+git add .gitignore
+git add docs/
+git commit -m "Ignore bookdown files created on build"
+```
+
+### Push to Github
+- First, we need to create a repo in Github
+- Create a repo name "Analysis_Bookdown" in Github: https://github.com/jennyjyounglee/Analysis_Bookdown
+- Then, run the below code to push local repo to Github.
+```{bash, eval=F}
+git remote add origin https://github.com/jennyjyounglee/Analysis_Bookdown.git
+git branch -M main
+git push -u origin main
+```
+
+### Publish the website!
+- In Github > Analysis_Bookdown repo > Settings > Pages > Source/Master/Docs/
+- Then your website should be available through <https://jennyjyounglee.github.io/Analysis_Bookdown>
+
+
+## Usage
 Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
 
 Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
 
 The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
-
-## Render book
-
-You can render the HTML version of this example book without changing anything:
-
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
-```
-
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
 
 ## Preview book
 
@@ -52,9 +146,50 @@ bookdown::serve_book()
 ```
 
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
+## How to cite?
+A BibTeX database is a plain-text file (with the conventional filename extension `.bib`) that consists of bibliography entries like this:
+```bibtex
+@Manual{R-base,
+  title = {R: A Language and Environment for Statistical
+    Computing},
+  author = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = {2016},
+  url = {https://www.R-project.org/},
+}
+```
+
+There is a helper function `write_bib()` in **knitr** to generate BibTeX entries automatically for R packages. For example, I created this citation [@R-bookdown] by typing `[@R-bookdown]`. I copy and pasted the output rendered from the below code in `.bib` file <https://bookdown.org/yihui/bookdown/citations.html>.
+```{r write-bib, comment='', warning=FALSE, eval=F}
+# the second argument can be a .bib file
+knitr::write_bib(c('bookdown'), '', width = 60)
+```
+
+
+## Output Formats
+
+The `split_by` argument specifies how you want to split the HTML output into multiple pages, and its possible values are:
+
+- `rmd`: use the base filenames of the input Rmd files to create the HTML filenames, e.g., generate `chapter3.html` for `chapter3.Rmd`.
+- `none`: do not split the HTML file (the book will be a single HTML file).
+- `chapter`: split the file by the a first-level (`#`)  headers.
+- `section`: split the file by the a second-level (`##`)  headers.
+- `chapter+number` and `section+number`: similar to `chapter` and `section`, but the files will be numbered.
+
+In my `_bookdown.yml`, I added `split_by:section` so that it split the file by the second-level headers.
+
+```{bash, eval=F}
+bookdown::gitbook:
+  css: style.css
+  lib_dir: assets
+  split_by: section
+  config:
+    toc:
+      before: |
+        <li><a href="./">A Minimal Book Example</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    download: ["pdf", "epub"]
 ```

@@ -3,9 +3,17 @@ tab:nice-tab
 eq:binom
 thm:tri
 about
+how-i-created-this-bookdown
+gitbook-template
+initialize-git
+change-.yml-files
+render-a-book
+push-to-github
+publish-the-website
 usage
-render-book
 preview-book
+how-to-cite
+output-formats
 hello-bookdown
 a-section
 cross
@@ -23,3 +31,7 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+fasse
+vpn
+vdi-access-vdiood
+how-to-get-started-in-fasse

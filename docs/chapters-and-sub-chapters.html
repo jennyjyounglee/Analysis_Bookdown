@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Sharing your book | A Book With Skills For Researchers</title>
+  <title>3.1 Chapters and sub-chapters | A Book With Skills For Researchers</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta property="og:title" content="3.1 Chapters and sub-chapters | A Book With Skills For Researchers" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Sharing your book | A Book With Skills For Researchers" />
+  <meta name="twitter:title" content="3.1 Chapters and sub-chapters | A Book With Skills For Researchers" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -37,8 +37,8 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="callout-blocks.html"/>
-<link rel="next" href="publishing.html"/>
+<link rel="prev" href="cross.html"/>
+<link rel="next" href="captioned-figures-and-tables.html"/>
 <script src="assets/header-attrs-2.11/header-attrs.js"></script>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -238,16 +238,28 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sharing-your-book" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Sharing your book</h1>
+<div id="chapters-and-sub-chapters" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Chapters and sub-chapters</h2>
+<p>There are two steps to cross-reference any heading:</p>
+<ol style="list-style-type: decimal">
+<li>Label the heading: <code># Hello world {#nice-label}</code>.
+<ul>
+<li>Leave the label off if you like the automated heading generated based on your heading title: for example, <code># Hello world</code> = <code># Hello world {#hello-world}</code>.</li>
+<li>To label an un-numbered heading, use: <code># Hello world {-#nice-label}</code> or <code>{# Hello world .unnumbered}</code>.</li>
+</ul></li>
+<li>Next, reference the labeled heading anywhere in the text using <code>\@ref(nice-label)</code>; for example, please see Chapter <a href="cross.html#cross">3</a>.
+<ul>
+<li>If you prefer text as the link instead of a numbered reference use: <a href="cross.html#cross">any text you want can go here</a>.</li>
+</ul></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="callout-blocks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="publishing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cross.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="captioned-figures-and-tables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -278,7 +290,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/06-share.Rmd",
+"link": "https://github.com/jennyjyounglee/Analysis_Bookdown/edit/BRANCH/02-cross-refs.Rmd",
 "text": "Edit"
 },
 "history": {

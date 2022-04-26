@@ -1,0 +1,37 @@
+# FASSE
+
+The FAS Secure Environment (FASSE) is a secure multi-tenant cluster environment to provide Harvard researchers access to a secure enclave for analysis of sensitive datasets with DUA‘s and IRB’s classified as Level 3 <https://docs.rc.fas.harvard.edu/kb/fasse/>.
+
+Access to the cluster is restricted via a Virtual Private Network (VPN) and only authorized users/groups will be added to the FASSE VPN realm. We provide different storage tiers based on project needs. Please review storage options. 
+
+## VPN
+To connect to a FASSE environment, you will connect to the FASRC VPN <vpn.rc.fas.harvard.edu> using the `@fasse` realm (ex. `–jennylee@fasse`), your FASRC password, and your OpenAuth 2FA code. 
+
+## VDI access (VDI/OoD)
+VDI, aka OpenOnDemand or OoD, is a virtual GUI interface that provides everything from pre-built apps to interactive command line access within a familiar desktop-like environment. The FASSE VDI is available when connected to our `@fasse` VPN realm, through your web browser.  Please visit to access the service: <https://fasseood.rc.fas.harvard.edu>.
+
+## How to get started in FASSE?
+
+I found Git tutorial in NSAPH Projects website helpful <https://nsaph.info/analysis.html#>
+
+1. Create a project folder in `/n/dominici_nsaph_l3/projects/`. For example, I created a folder `/n/dominici_nsaph_l3/projects/pm25-mortality-medicare-causalgps-pool`. 
+
+2. Initialize git, create a README.md file
+```{bash, eval=F}
+git init # initiate git
+# Create README.md file
+git add README.md
+# Create .gitignore file and add a line data/
+git commit -m "first commit"
+```
+
+3. Save remote origin by using token.
+- First, we need to create a repo in Github. For example,
+https://github.com/NSAPH-Projects/pm25-mortality-medicare-causalgps-pool
+- Then, create a token. To do so, Github > Settings > Developer's Settings > Personal Access Token.
+- Copy and save the token created above. In the below code, insert that token instead of `mytoken`.
+```{bash, eval=F}
+git remote remove origin # remove any remote origin if already exists
+git remote add origin https://mytoken@github.com/NSAPH-Projects/pm25-mortality-medicare-causalgps-pool
+git push origin master
+```
