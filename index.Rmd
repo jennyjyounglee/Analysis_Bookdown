@@ -120,9 +120,9 @@ git commit -m "Ignore bookdown files created on build"
 - Create a repo name "Analysis_Bookdown" in Github: https://github.com/jennyjyounglee/Analysis_Bookdown
 - Then, run the below code to push local repo to Github.
 ```{bash, eval=F}
-git remote add origin https://github.com/jennyjyounglee/Analysis_Bookdown.git
-git branch -M main
-git push -u origin main
+git remote add origin https://github.com/jennyjyounglee/Analysis_Bookdown.git # add remote origin
+git branch -M main # change the name of "master" branch to "main"
+git push -u origin main # push to the github
 ```
 
 ### Publish the website!
